@@ -2,7 +2,7 @@ import pymysql
 from cadastro import Cadastro
 
 def Novo_Cadastro():
-    conexao = pymysql.connect(db='cadastro', user='root', passwd='')
+    conexao = pymysql.connect(db='DB_CPU', user='root', passwd='brunico2807') 
     cursor = conexao.cursor()
     
     print("CADASTRO DE NOVO USUÁRIO")
@@ -27,7 +27,7 @@ def Novo_Cadastro():
     cadastro.InserirSenha()
     senha = cadastro.ConsultarSenha()
     
-    code = "INSERT INTO users (Nome, login, senha, email, idade) VALUES (%s, %s, %s, %s, %s)"
+    code = "INSERT INTO cadastro (NOME, LOGIN, SENHA, EMAIL, IDADE) VALUES (%s,%s,%s,%s,%s)"
     val = [nome,login,senha,email,idade] 
     cursor.execute(code,val)
     conexao.commit()
